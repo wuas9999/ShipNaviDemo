@@ -28,17 +28,22 @@ SOURCES += \
         mainwindow.cpp \
     GraphicsMap.cpp \
     GraphicsSceneMap.cpp \
-    MapSettingWidget.cpp
+    MapSettingWidget.cpp \
+    cProjectionMercator.cpp \
+    MainWnd.cpp
 
 HEADERS += \
         mainwindow.h \
     GraphicsMap.h \
     GraphicsSceneMap.h \
-    MapSettingWidget.h
+    MapSettingWidget.h \
+    cProjectionMercator.h \
+    MainWnd.h
 
 FORMS += \
         mainwindow.ui \
-    MapSettingWidget.ui
+    MapSettingWidget.ui \
+    MainWnd.ui
 
 RESOURCES += \
     res.qrc

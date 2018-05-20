@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>res/timg.jpg</file>
+        <file>res/水库1_180124120328.png</file>
     </qresource>
 </RCC>

@@ -12,6 +12,7 @@
 #include <QMouseEvent>
 
 #include <QLabel>
+#include <QGraphicsPixmapItem>
 
 GraphicsMap::GraphicsMap(QWidget *parent )
     :QGraphicsView(parent)
@@ -22,6 +23,7 @@ GraphicsMap::GraphicsMap(QWidget *parent )
     this->setResizeAnchor(QGraphicsView::AnchorViewCenter);
     m_scene = new GraphicsSceneMap(this);
     setScene(m_scene);
+    this->centerOn(m_scene->getPicItem()->scenePos());
     QGraphicsRectItem* rectItem = m_scene->addRect(0,0,100,3,QPen(Qt::black),QBrush(QColor(255,0,0,255)));
 
     int mask =QGraphicsItem::ItemIsMovable
@@ -70,9 +72,8 @@ void GraphicsMap::mouseMoveEvent(QMouseEvent *event)
 
 void GraphicsMap::wheelEvent(QWheelEvent *event)
 {
-    QGraphicsView::wheelEvent(event);
     qDebug()<<"..de"<<event->delta();
-    static int level = 1;
+    static int level = 18;
     int oldLevel = level;
     if(event->delta()>0)
     {
@@ -81,18 +82,19 @@ void GraphicsMap::wheelEvent(QWheelEvent *event)
     else{
         level--;
     }
-    level = qMin(8,qMax(1,level));
+    level = qMin(18,qMax(0,level));
 
     if(oldLevel != level)
     {
         m_scene->setLevel(level);
-
-        qreal dScale = 2.0;
+        qreal dScale = 0.5;
         if(level>oldLevel){
-            dScale = 0.5;
+             dScale = 2.0;
         }
         this->scale(dScale,dScale);
+        QGraphicsView::wheelEvent(event);
     }
+
 
 
 

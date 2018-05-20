@@ -43,7 +43,6 @@ bool MapSettingWidget::eventFilter(QObject *watched, QEvent *event)
 {
     if(watched ==  ui->filePath_location)
     {
-
         if(event->type() == QEvent::DragEnter)
         {
             QDragEnterEvent* dropEvent = (QDragEnterEvent*)event;
@@ -62,7 +61,7 @@ bool MapSettingWidget::eventFilter(QObject *watched, QEvent *event)
     }
     else if(watched == ui->filePath_picture)
     {
-        qDebug()<<"type"<<event->type();
+        //qDebug()<<"type"<<event->type();
         if(event->type() == QEvent::DragEnter)
         {
             QDragEnterEvent* dropEvent = (QDragEnterEvent*)event;
